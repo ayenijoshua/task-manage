@@ -3,7 +3,7 @@
         <div class="row main-content bg-success text-center">
             <div class="col-md-4 text-center company__info">
                 <span class="company__logo"><h2><span class="fa fa-android"></span></h2></span>
-                <h4 class="company_title"><a href="/" >Personal Task Manager</a></h4>
+                <h4 class="company_title text-white"><a class="text-white" href="/" >Personal Task Manager</a></h4>
             </div>
             <div class="col-md-8 col-xs-12 col-sm-12 login_form ">
                 <div class="container-fluid">
@@ -13,11 +13,14 @@
                     <div class="row">
                         <form method="post" :action="postAction" class="form-group" @submit.prevent>
                             <div class="row">
-                                <input type="text" v-model="loginForm.email" id="username" class="form__input" placeholder="Eail">
+                                <input type="text" v-model="registerForm.name" id="username" class="form__input" placeholder="name">
+                            </div>
+                            <div class="row">
+                                <input type="text" v-model="registerForm.email" id="username" class="form__input" placeholder="Email">
                             </div>
                             <div class="row">
                                 <!-- <span class="fa fa-lock"></span> -->
-                                <input type="password" v-model="loginForm.password" id="password" class="form__input" placeholder="Password">
+                                <input type="password" v-model="registerForm.password" id="password" class="form__input" placeholder="Password">
                             </div>
                             
                             <div class="row">
@@ -36,10 +39,10 @@
 
 <script>
 export default {
-    name:'LoginComponent',
+    name:'RegisterComponent',
     props:{
         panelTitle:{
-            default:'login',
+            default:'register',
             type:String,
             required:true
         },
@@ -56,7 +59,8 @@ export default {
     },
     data(){
         return{
-            loginForm:{
+            registerForm:{
+                name:'',
                 email:'',
                 password:''
             }
@@ -65,7 +69,7 @@ export default {
 
     methods: {
         submit(){
-            axios.post(this.postAction, this.loginForm)
+            axios.post(this.postAction, this.registerForm)
             .then(res => {
                 if (res.data.success) {
                  location = res.data.redirect_url

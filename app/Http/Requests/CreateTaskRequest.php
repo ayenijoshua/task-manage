@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
 
-class UpdateCompanyRequest extends FormRequest
+class CreateTaskRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,7 +13,7 @@ class UpdateCompanyRequest extends FormRequest
      */
     public function authorize()
     {
-        return Auth::user()->is_admin;
+        return true;
     }
 
     /**
@@ -25,11 +24,9 @@ class UpdateCompanyRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|string',
-            'email' => 'required|string|email',
-            'url' => 'required|string',
-            'logo_path' => 'nullable'
+            'title'=>'required|string',
+            'description' => 'required|string',
+            'status' => 'required|string',
         ];
-    
     }
 }

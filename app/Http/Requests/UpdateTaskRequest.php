@@ -3,8 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
-class CreateCompanyRequest extends FormRequest
+class UpdateTaskRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,10 +26,8 @@ class CreateCompanyRequest extends FormRequest
     {
         return [
             'name'=>'required|string',
-            'email' => 'required|unique:companies|string|email',
-            'password' => 'required|string',
-            'url' => 'required|string',
-            'logo_path' => 'nullable|file'
+            'email' => 'required|string|email',
         ];
+    
     }
 }

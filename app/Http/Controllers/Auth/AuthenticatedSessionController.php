@@ -42,24 +42,22 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        $redirectUrl = $request->user()->is_admin 
-        ? RouteServiceProvider::ADMIN_DASHBOARD 
-        : RouteServiceProvider::USER_DASHBOARD;
+        $redirectUrl = RouteServiceProvider::HOME;
 
         return response(['redirect_url'=>$redirectUrl,'success'=>true],200);
     }
 
-    /**
-     * authenticate company
-     */
-    public function storeCompany(CompanyLoginRequest $request)
-    {
-        $request->authenticate();
+    // /**
+    //  * authenticate company
+    //  */
+    // public function storeCompany(CompanyLoginRequest $request)
+    // {
+    //     $request->authenticate();
 
-        $request->session()->regenerate();
+    //     $request->session()->regenerate();
 
-        return response(['redirect_url'=>RouteServiceProvider::COMPANY_DASHBOARD,'success'=>true],200);
-    }
+    //     return response(['redirect_url'=>RouteServiceProvider::HOME,'success'=>true],200);
+    // }
 
     /**
      * Destroy an authenticated session.

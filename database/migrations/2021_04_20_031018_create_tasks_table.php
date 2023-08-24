@@ -15,13 +15,10 @@ class CreateTasksTable extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('logo_path')->nullable();
-            $table->string('url');
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('title');
+            $table->string('description');
+            $table->enum('status',['completed','in-progress','not-started']);
+            $table->integer('category_id')->nullable();
             $table->timestamps();
         });
     }

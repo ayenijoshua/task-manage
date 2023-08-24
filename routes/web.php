@@ -54,10 +54,8 @@ Route::group(['prefix' => 'company','middleware'=>['auth:company']], function ()
     Route::get('{id}/show',[CompanyController::class, 'show'])->name('company.show');
 });
 
-Route::group(['prefix' => 'employee','middleware'=>['auth']], function () {
-    Route::get('dashboard',[UserController::class, 'userDashboard'])->name('employee.dashboard');
-    Route::get('user/{id}',[UserController::class, 'user'])->name('employee.user');
-    Route::post('update-employee/{id}',[UserController::class, 'update'])->name('employee.update');
+Route::group(['prefix' => 'dashboard','middleware'=>['auth']], function () {
+    Route::get('/',[UserController::class, 'userDashboard'])->name('dashboard');
 });
 
 require __DIR__.'/auth.php';

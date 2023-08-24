@@ -14,7 +14,7 @@ class CreateUserRequest extends FormRequest
      */
     public function authorize()
     {
-        return Auth::user()->is_admin;
+        return true;
     }
 
     /**
@@ -28,8 +28,6 @@ class CreateUserRequest extends FormRequest
             'name'=>'required|string',
             'email'=>'required|unique:users|email',
             'password'=>'required|string',
-            'company_id'=>'required|nullable|numeric',
-            'is_employee'=>'nullable|numeric'
         ];
     }
 }

@@ -2,22 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateCompanyRequest;
-use App\Http\Requests\UpdateCompanyRequest;
-use App\Models\Company;
+use App\Http\Requests\CreateTaskRequest;
+use App\Http\Requests\UpdateTaskRequest;
+use App\Models\Task;
 use Illuminate\Http\Request;
 use App\Repositories\Interfaces\RepositoryInterface;
 
 class TaskController extends Controller
 {
-    function __construct(RepositoryInterface $company)
+    private $task;
+    function __construct(RepositoryInterface $task)
     {
-        $this->company = $company;
+        $this->task = $task;
     }
 
     function all($paginate=null)
     {
-        $companies = $paginate ? $this->company->with('employees')->paginate(5) : $this->company->all();
+        $companies = $paginate ? $this->task->with('employees')->paginate(5) : $this->task->all();
         return response(['companies'=>$companies,'success'=>true],200);
     }
 
@@ -26,30 +27,11 @@ class TaskController extends Controller
         return view('admin.companies');
     }
 
-    public function company($id){
-        return response(['company'=>$this->company->get($id)->load('employees'),'success'=>true],200);
+    public function task($id){
+        return response(['task'=>$this->task->get($id),'success'=>true],200);
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Request $request)
-    {
-        $company = $request->user('company')->load('employees');
-        //dd($company);
-        return view('company.dashboard',['company'=>$company]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('admin.create-company');
-    }
+    
+    
 
     /**
      * Store a newly created resource in storage.
@@ -57,45 +39,17 @@ class TaskController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateCompanyRequest $request)
+    public function store(CreateTaskRequest $request)
     {
-        $this->company->createCompany($request);
-        return response(['message'=>"Company created successfully",'success'=>true]);
+        $this->task->createTask($request);
+        return response(['message'=>"Task created successfully",'success'=>true]);
     }
 
-    public function companyEmployees(Request $request){
-        return view('company.employees',['id'=>$request->user('company')->id]);
-    }
 
     public function employees(Company $id){
         $company = $id;
         $employees = $company->employees()->paginate(5);
         return response(['employees'=>$employees,'success'=>true],200);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Company  $company
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Company $id)
-    {
-        info($id);
-        $company = $id;
-
-        return response(['company'=>$company,'success'=>true],200);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Company  $company
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        return view('admin.edit-company',['id'=>$id]);
     }
 
     /**

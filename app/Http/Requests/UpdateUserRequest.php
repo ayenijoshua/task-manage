@@ -27,8 +27,6 @@ class UpdateUserRequest extends FormRequest
         return [
             'name'=>'required|string',
             'email'=>'required|email',
-            'company_id'=>'nullable|numeric',
-            'is_employee'=>'nullable|numeric'
         ];
     }
 }

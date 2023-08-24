@@ -19,20 +19,24 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, ...$guards)
     {
-        $guards = empty($guards) ? [null] : $guards;
 
-        foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
-                if($guard == 'company'){
-                    return redirect(RouteServiceProvider::COMPANY_DASHBOARD);
-                }
-                if(auth()->user()->is_admin){
-                    return redirect(RouteServiceProvider::ADMIN_DASHBOARD);
-                }else{
-                    return redirect(RouteServiceProvider::USER_DASHBOARD);
-                }
-            }
+        if(auth()->user()){
+            return response(['redirect_url'=>RouteServiceProvider::HOME,'success'=>true],200);
         }
+        // $guards = empty($guards) ? [null] : $guards;
+
+        // foreach ($guards as $guard) {
+        //     if (Auth::guard($guard)->check()) {
+        //         if($guard == 'company'){
+        //             return redirect(RouteServiceProvider::COMPANY_DASHBOARD);
+        //         }
+        //         if(auth()->user()->is_admin){
+        //             return redirect(RouteServiceProvider::ADMIN_DASHBOARD);
+        //         }else{
+        //             return redirect(RouteServiceProvider::USER_DASHBOARD);
+        //         }
+        //     }
+        // }
 
         return $next($request);
     }
