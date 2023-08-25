@@ -24,7 +24,7 @@ class DeleteTaskMutation extends Mutation
             'id' => [
                 'name' => 'id',
                 'type' => Type::int(),
-                'rules' => ['required']
+                'rules' => ['required','exists:tasks,id']
             ]
         ];
     }

@@ -25,7 +25,21 @@ class CreateTaskMutation extends Mutation
             'title' => [
                 'name' => 'title',
                 'type' =>  Type::nonNull(Type::string()),
+                'rules'=>['unique:categories,title']
             ],
+            'description' => [
+                'name' => 'description',
+                'type' =>  Type::string(),
+            ],
+            'status'=>[
+                'name' => 'description',
+                'type' =>  Type::string(),
+            ],
+            'category_id'=>[
+                'name'=>'category_id',
+                'type'=>Type::int(),
+                'rules'=>['exists:categories,id']
+            ]
         ];
     }
 

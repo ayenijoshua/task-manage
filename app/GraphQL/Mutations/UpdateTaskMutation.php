@@ -25,6 +25,7 @@ class UpdateTaskMutation extends Mutation
             'id' => [
                 'name' => 'id',
                 'type' =>  Type::nonNull(Type::int()),
+                'rules'=>['exists:tasks,id']
             ],
             'title' => [
                 'name' => 'title',

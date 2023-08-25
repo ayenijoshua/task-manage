@@ -72,29 +72,30 @@ return [
     //      ],
     //  ]
     //
+
     'schemas' => [
         'default' => [
             'query' => [
-                // ExampleQuery::class,
+                'task' => \App\GraphQL\Queries\TaskQuery::class,
+                'tasks' => \App\GraphQL\Queries\TasksQuery::class,
+                'category' => \App\GraphQL\Queries\CategoryQuery::class,
+                'categories' => \App\GraphQL\Queries\CategoriesQuery::class,
             ],
             'mutation' => [
-                // ExampleMutation::class,
+                'createTask' => \App\GraphQL\Mutations\CreateTaskMutation::class,
+                'updateTask' => \App\GraphQL\Mutations\UpdateTaskMutation::class,
+                'deleteTask' => \App\GraphQL\Mutations\DeleteTaskMutation::class,
+                'createCategory' => \App\GraphQL\Mutations\CreateCategoryMutation::class,
+                'updateCategory' => \App\GraphQL\Mutations\UpdateCategoryMutation::class,
+                'deleteCategory' => \App\GraphQL\Mutations\DeleteCategoryMutation::class,
             ],
-            // The types only available in this schema
-            'types' => [
-                // ExampleType::class,
-            ],
-
-            // Laravel HTTP middleware
-            'middleware' => null,
-
-            // Which HTTP methods to support; must be given in UPPERCASE!
-            'method' => ['GET', 'POST'],
-
-            // An array of middlewares, overrides the global ones
-            'execution_middleware' => null,
+            'middleware' => [],
+            'method' => ['get', 'post'],
         ],
     ],
+
+    // some code 
+
 
     // The global types available to all schemas.
     // You can then access it from the facade like this: GraphQL::type('user')
@@ -106,9 +107,8 @@ return [
     // ]
     //
     'types' => [
-        // ExampleType::class,
-        // ExampleRelationType::class,
-        // \Rebing\GraphQL\Support\UploadType::class,
+        'Task' => \App\GraphQL\Types\TaskType::class,
+        'Category' => \App\GraphQL\Types\CategoryType::class
     ],
 
     // The types will be loaded on demand. Default is to load all types on each request

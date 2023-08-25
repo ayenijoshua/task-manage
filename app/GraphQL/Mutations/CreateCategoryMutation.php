@@ -25,6 +25,7 @@ class CreateCategoryMutation extends Mutation
             'name' => [
                 'name' => 'name',
                 'type' =>  Type::nonNull(Type::string()),
+                'rules'=>['unique:categories,name']
             ],
         ];
     }

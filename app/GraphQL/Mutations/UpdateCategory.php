@@ -25,6 +25,7 @@ class UpdateCategoryMutation extends Mutation
             'id' => [
                 'name' => 'id',
                 'type' =>  Type::nonNull(Type::int()),
+                'rules'=>['exists:categories,id']
             ],
             'name' => [
                 'name' => 'name',
