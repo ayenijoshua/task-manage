@@ -12,7 +12,7 @@ use Rebing\GraphQL\Support\Type as GraphQLType;
 class TaskType extends GraphQLType
 {
     protected $attributes = [
-        'title' => 'Task',
+        'name' => 'Task',
         'description' => 'Collection of tasks',
         'model' => Task::class
     ];
@@ -28,9 +28,17 @@ class TaskType extends GraphQLType
                 'type' => Type::nonNull(Type::string()),
                 'description' => 'Title of the task'
             ],
+            'description' => [
+                'type' => Type::nonNull(Type::string()),
+                'description' => 'Description of the task'
+            ],
             'status' => [
                 'type' => Type::nonNull(Type::string()),
                 'description' => 'status of task'
+            ],
+            'category' => [
+                'type' => GraphQL::type('Category'),
+                'description' => 'category of task',
             ],
             'created_at' => [
                 'type' => Type::string(),

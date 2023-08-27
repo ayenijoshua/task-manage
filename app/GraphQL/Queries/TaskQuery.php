@@ -24,13 +24,18 @@ class TaskQuery extends Query
             'id' => [
                 'name' => 'id',
                 'type' => Type::int(),
-                'rules' => ['required']
+                //'rules' => ['required']
+            ],
+            'title' => [
+                'name' => 'title',
+                'type' => Type::string(),
+                //'rules' => ['required']
             ]
         ];
     }
 
     public function resolve($root, $args)
     {
-        return Task::findOrFail($args['id']);
+        return empty($args['id']) ? Task::where('title',$args['title'])->get() : Task::findOrFail($args['id']);
     }
 }

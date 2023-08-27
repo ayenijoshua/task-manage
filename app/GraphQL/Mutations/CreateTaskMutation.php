@@ -25,28 +25,29 @@ class CreateTaskMutation extends Mutation
             'title' => [
                 'name' => 'title',
                 'type' =>  Type::nonNull(Type::string()),
-                'rules'=>['unique:categories,title']
+                'rules'=>['unique:tasks,title']
             ],
             'description' => [
                 'name' => 'description',
                 'type' =>  Type::string(),
             ],
             'status'=>[
-                'name' => 'description',
+                'name' => 'status',
                 'type' =>  Type::string(),
             ],
             'category_id'=>[
                 'name'=>'category_id',
-                'type'=>Type::int(),
+                'type'=>Type::string(),
                 'rules'=>['exists:categories,id']
-            ]
+            ],
         ];
     }
 
     public function resolve($root, $args)
     {
-        $task= new Task();
+        $task = new Task();
         $task->fill($args);
+        $task['user_id'] = auth()->user()->id;
         $task->save();
 
         return $task;

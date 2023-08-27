@@ -3,7 +3,7 @@
         <div class="row main-content bg-success text-center">
             <div class="col-md-4 text-center company__info">
                 <span class="company__logo"><h2><span class="fa fa-android"></span></h2></span>
-                <h4 class="company_title text-white"><a class="text-white" href="/" >Personal Task Manager</a></h4>
+                <h4 class="company_title text-white">Personal Task Manager</h4>
             </div>
             <div class="col-md-8 col-xs-12 col-sm-12 login_form ">
                 <div class="container-fluid">

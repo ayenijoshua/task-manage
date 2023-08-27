@@ -24,7 +24,7 @@ class UpdateTaskMutation extends Mutation
         return [
             'id' => [
                 'name' => 'id',
-                'type' =>  Type::nonNull(Type::int()),
+                'type' =>  Type::nonNull(Type::string()),
                 'rules'=>['exists:tasks,id']
             ],
             'title' => [
@@ -35,6 +35,16 @@ class UpdateTaskMutation extends Mutation
                 'name' => 'description',
                 'type' =>  Type::string(),
             ],
+            'status' => [
+                'name' => 'status',
+                'type' =>  Type::string(),
+            ],
+            'category_id' => [
+                'name' => 'category_id',
+                'type'=>Type::string(),
+                'rules'=>['exists:categories,id']
+            ],
+
         ];
     }
 

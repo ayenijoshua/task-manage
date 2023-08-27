@@ -19,6 +19,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['prefix' => 'taska','middleware'=>['auth']], function () {
+Route::group(['prefix' => 'tasks','middleware'=>['auth']], function () {
     Route::get('/',[TaskController::class, 'tasks'])->name('tasks');
 });
+
+//Route::get('categories',[Category::class, 'tasks'])->name('tasks');

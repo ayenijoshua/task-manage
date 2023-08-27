@@ -19,7 +19,7 @@
     </head>
     <body class="bg-light">
         <nav class="navbar navbar-expand-md fixed-to navbar-blue bg-dark">
-            <a class="navbar-brand" href="#">CRM-Company</a>
+            <a class="navbar-brand" href="#">Personal task Manager</a>
             <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -27,16 +27,6 @@
             <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
                 
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{route('company.dashboard')}}">Dashboard <span class="sr-only"></span></a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Employees</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown01">
-                      <a class="dropdown-item" href="{{route('company-employees')}}">All Employees</a>
-                      
-                    </div>
-                </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="{{route('users.logout')}}">Logout<span class="sr-only"></span></a>
                 </li>

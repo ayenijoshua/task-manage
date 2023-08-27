@@ -34,7 +34,7 @@ class AuthenticatedSessionController extends Controller
      * Handle an incoming authentication request.
      *
      * @param  \App\Http\Requests\Auth\LoginRequest  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\Response
      */
     public function store(LoginRequest $request)
     {
@@ -46,18 +46,6 @@ class AuthenticatedSessionController extends Controller
 
         return response(['redirect_url'=>$redirectUrl,'success'=>true],200);
     }
-
-    // /**
-    //  * authenticate company
-    //  */
-    // public function storeCompany(CompanyLoginRequest $request)
-    // {
-    //     $request->authenticate();
-
-    //     $request->session()->regenerate();
-
-    //     return response(['redirect_url'=>RouteServiceProvider::HOME,'success'=>true],200);
-    // }
 
     /**
      * Destroy an authenticated session.
@@ -73,6 +61,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/login');
     }
 }

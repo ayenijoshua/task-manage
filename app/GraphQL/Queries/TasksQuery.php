@@ -21,6 +21,8 @@ class TasksQuery extends Query
 
     public function resolve($root, $args)
     {
-        return Task::all();
+        $tasks = Task::where('user_id',auth()->user()->id)->with('category')->get();
+        info('tasks',[$tasks]);
+        return $tasks;
     }
 }

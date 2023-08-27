@@ -21,6 +21,9 @@ class RedirectIfAuthenticated
     {
 
         if(auth()->user()){
+            if (! $request->expectsJson()) {
+                return redirect('dashboard');
+            }
             return response(['redirect_url'=>RouteServiceProvider::HOME,'success'=>true],200);
         }
         // $guards = empty($guards) ? [null] : $guards;

@@ -48,6 +48,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return response(['redirect_url'=>RouteServiceProvider::Home,'success'=>true],200); //redirect(RouteServiceProvider::HOME);
+        return response(['redirect_url'=>RouteServiceProvider::HOME,'success'=>true],200); //redirect(RouteServiceProvider::HOME);
     }
 }

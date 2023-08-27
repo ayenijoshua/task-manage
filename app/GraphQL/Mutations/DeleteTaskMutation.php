@@ -23,7 +23,7 @@ class DeleteTaskMutation extends Mutation
         return [
             'id' => [
                 'name' => 'id',
-                'type' => Type::int(),
+                'type' => Type::string(),
                 'rules' => ['required','exists:tasks,id']
             ]
         ];
@@ -31,6 +31,7 @@ class DeleteTaskMutation extends Mutation
 
     public function resolve($root, $args)
     {
+        info('id',[$args['id']]);
         $task = Task::findOrFail($args['id']);
 
         return  $task->delete() ? true : false;
