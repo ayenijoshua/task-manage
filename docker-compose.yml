@@ -21,7 +21,7 @@ services:
 
     mini-crm-node:
         image: node:latest
-        user: node
+        #user: node
         working_dir: /assets
         #environment:
             #NODE_OPTIONS: "--openssl-legacy-provider"
