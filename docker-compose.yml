@@ -20,14 +20,14 @@ services:
             - "8000:80"
 
     mini-crm-node:
-        image: node:16.3.0-alpine
+        image: node:latest
         user: node
         working_dir: /assets
         #environment:
             #NODE_OPTIONS: "--openssl-legacy-provider"
         volumes: 
             - ./:/assets
-        #command: npm install
+        command: npm install
         #command: npm run watch
 
     mini-crm-db:
