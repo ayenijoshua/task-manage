@@ -2,21 +2,15 @@
 
 ## About Personal task manager
 
-Personal is a simple fullstack(Laravel/vue) task management application. 
+Personal task manager is a simple fullstack(Laravel/vue) task management application. 
 This application complies with standard SE principles like DRY. SOLID and the repository pattern.
 I also used Laravel's contextual binding to resolve the unanimous repository interface in my controllers.
 
 Below are test login routes to access the application
 
-- [live url](http://46.101.8.78/).
-- Admin/User Login - (http://46.101.8.78/login).
-- Admin login -email-[test@test.com].
-- Admin login -password [password].
-- Company Login - (http://46.101.8.78/company-login).
-- Company Email - [test@company.com].
-- Company Password - [password].
-- Employee Email - [test@employee.com]
-- Employee password - [password]
+- [live url]http://138.68.190.24:8000/).
+- user Email - [user@mail.com]
+- user password - [password]
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
@@ -25,7 +19,7 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 Find a docker-compose.yml file in the root of the folder.
 
 ### Steps
-- Ensure to have docker installed on your local machine
+- Ensure to have docker installed on your local machine 
 - Run docker-compose exec mini-crm-node bash to temporary populate the vue assets
 - then run npm instlall to install vue depencies
 - run docker-compose up -d
@@ -38,14 +32,3 @@ That's all you have to do. You can read more about docker and compose to gain mo
 - Ensure to install php,mysql and their depencies on your local machine
 - you can also install sqlite3 for testing
 - Ensure to have node and npm installed for vue transpilling
-
-
-## Contributing
-
-Thank you for taking a look at this repo [Live url](http://46.101.8.78/). 
-You are welcome to contribute and add more functionalties
-
-
-## License
-
-The application is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
